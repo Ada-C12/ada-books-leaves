@@ -1,3 +1,14 @@
+<% if @book.errors.any? %>
+  <h1>Errors</h1>
+  <ul class="errors">
+    <% @book.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <p>Please provide the following information to <%= verb_name %> your book to our database:</p>
 
 <%= form_with model: @book, class: "book-input" do |f| %>
@@ -9,6 +20,9 @@
 
   <%= f.label :description %>
   <%= f.text_area :description %>
+
+  <%= f.label :publication_date %>
+  <%= f.number_field :publication_date %>
 
   <%# <%= f.label :read %>
   <%# <%= f.check_box :read %>
