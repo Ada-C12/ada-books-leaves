@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     resources :books #, except: [:index]
 
-    get 'authors/', to: 'author#index', as: 'authors'
+    get 'authors/', to: 'authors#index', as: 'authors'
     get 'authors/:id', to: 'authors#show', as: 'author'
 
 
