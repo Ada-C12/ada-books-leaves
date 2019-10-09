@@ -13,6 +13,7 @@ class BooksController < ApplicationController
       # This is the 'regular' route, /books
       @books = Book.alpha_books #Book.all
     end
+   
   end
   
   def show
