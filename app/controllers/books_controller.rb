@@ -1,6 +1,18 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.alpha_books #Book.all
+    if params[:author_id]
+      # This is the nested route, /author/:author_id/books
+      author = Author.find_by(id: params[:author_id])
+      if author.nil?
+        redirect_to authors_path
+      end
+
+      @books = author.books
+
+    else
+      # This is the 'regular' route, /books
+      @books = Book.alpha_books #Book.all
+    end
   end
   
   def show
