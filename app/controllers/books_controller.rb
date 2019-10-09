@@ -27,7 +27,15 @@ class BooksController < ApplicationController
   end
   
   def new
-    @book = Book.new
+    if params[:author_id]
+      # This is the nested route, /author/:author_id/books/new
+      author = Author.find_by(id: params[:author_id])
+      @book = author.books.new
+
+    else
+      # This is the 'regular' route, /books/new
+      @book = Book.new
+    end
   end
   
   def create
