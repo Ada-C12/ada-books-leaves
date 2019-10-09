@@ -1,7 +1,16 @@
 require "test_helper"
 
 describe Book do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
+  # describe "Validations" do
+  #   b = Book.new(title: "Good", author: variable_that_is_totally_valid, description: "fjkajjkldfsajlkfd")
+
+  #   b.title = nil
+  #   b.save
+  # end
+
+  # describe "custom methods" do
+  #   it "returns books in alphabetical order" do
+
+  #   end
   # end
 end
