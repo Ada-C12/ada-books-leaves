@@ -7,7 +7,7 @@ class BooksController < ApplicationController
         redirect_to authors_path
       end
 
-      @books = author.books
+      @books = author.books.alpha_books
 
     else
       # This is the 'regular' route, /books
