@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
     resources :books #, except: [:index]
 
-    resources :authors, only: [:index, :show] do
+    resources :authors, only: [:index, :show, :new, :create] do
       resources :books, only: [:index, :new]
     end
 
