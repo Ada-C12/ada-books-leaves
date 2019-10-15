@@ -45,7 +45,7 @@ class BooksController < ApplicationController
       redirect_to root_path # go to the index so we can see the book in the list
       return
     else # save failed :(
-      flash[:failure] = "Book failed to save"
+      flash.now[:failure] = "Book failed to save"
       render :new # show the new book form view again
       return
     end
