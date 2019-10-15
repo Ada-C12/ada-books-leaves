@@ -28,6 +28,12 @@
           <%= link_to "All authors", authors_path %>
         </li>
     </div>
+    <section class="flash">
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
+
     <%= yield %>
     <footer>
       <p>Copyright Leaves 2019 BayBEEEEEEEEEEE</p>

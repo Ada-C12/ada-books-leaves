@@ -17,3 +17,11 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+.success {
+  background-color: lightgreen
+}
+
+.failure {
+  background-color: pink
+}
