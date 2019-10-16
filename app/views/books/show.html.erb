@@ -2,6 +2,7 @@
 
 <h2>Title: <%= @book.title %></h2>
 <h3>Author: <%= @book.author.name %></h3>
-<p><%= @book.description%></p>
+<p><%= @book.description.html_safe%></p>
+Added to this site <%= readable_date(@book.created_at) %>
 
 <p><%= link_to "Return to Book List", books_path %></p>

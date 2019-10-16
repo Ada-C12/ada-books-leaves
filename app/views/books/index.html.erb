@@ -1,10 +1,13 @@
 <h1>Books</h1>
 
 <ul>
-  <% @books.each do |book|  %>
+  <% @books.each_with_index do |book, index|  %>
     <li>
+      <h5>
       <%= link_to book.title, book_path(book) %>
-      By: <%= book.author.name %> <%= link_to "Edit", edit_book_path(book) %> <%= link_to "Delete", book_path(book), method: :delete, data: {confirm: "Are you sure?"}%>
+      By: <%= book.author.name %> <% view_badge_adder(index)%>
+      <%= link_to "Edit", edit_book_path(book) %> <%= link_to "Delete", book_path(book), method: :delete, data: {confirm: "Are you sure?"}%>
+      </h5>
     </li>
   <% end %>
 </ul>
