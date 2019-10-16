@@ -1,12 +1,9 @@
 require "test_helper"
-require "pry"
 
-describe ApplicationHelper do
-  include ApplicationHelper
+
+describe ApplicationHelper, :helper do
   describe 'readable_date' do
     it "produces a tag with the full timestamp" do
-      
-      binding.pry
       
       date = Date.today - 14
 

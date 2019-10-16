@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe BooksHelper do
+describe BooksHelper, :helper do
   describe "view badge adder" do
     it "gives the right number" do
       num = 6

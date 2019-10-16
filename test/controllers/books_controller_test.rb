@@ -35,7 +35,7 @@ describe BooksController do
   describe 'show action' do
 
     it 'responds with a success when id given exists' do
-      valid_book = Book.create(title: "Valid Book")
+      valid_book = Book.first
       
       get book_path(valid_book.id)
 
@@ -46,7 +46,7 @@ describe BooksController do
     it 'responds with a not_found when id given does not exist' do
       get book_path("500")
 
-      must_respond_with :not_found
+      must_respond_with :redirect
     end
 
   end
@@ -61,8 +61,9 @@ describe BooksController do
       book_hash = {
         book: {
           title: "Practical Object Oriented Programming in Ruby",
-          author: "Sandi Metz",
-          description: 'A look at how to design object-oriented systems'
+          author_id: Author.first.id,
+          description: 'A look at how to design object-oriented systems',
+          publication_date: 2017
         }
       }
 
