@@ -10,6 +10,9 @@ class UsersController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as returning user #{username}"
+      # flash[:goblin] = "The Goblin is HERE"
+      # flash[:warning] = "The number 2"
+      # flash[:error] = "I'm number 1"
     else
       user = User.create(username: username)
       session[:user_id] = user.id
