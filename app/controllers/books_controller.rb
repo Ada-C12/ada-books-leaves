@@ -1,4 +1,8 @@
 class BooksController < ApplicationController
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :if_book_missing, only: [:show, :edit, :destroy]
+  # after_action :no_oper, only: [:show, :edit]
+
   def index
     if params[:author_id]
       # This is the nested route, /author/:author_id/books
@@ -16,15 +20,7 @@ class BooksController < ApplicationController
    
   end
   
-  def show
-    book_id = params[:id]
-    @book = Book.find_by(id: book_id)
-    
-    if @book.nil?
-      head :not_found
-      return
-    end
-  end
+  def show ; end
   
   def new
     if params[:author_id]
@@ -51,17 +47,9 @@ class BooksController < ApplicationController
     end
   end
   
-  def edit
-    @book = Book.find_by(id: params[:id])
-    
-    if @book.nil?
-      head :not_found
-      return
-    end
-  end
+  def edit ; end
   
   def update
-    @book = Book.find_by(id: params[:id])
     if @book.update(book_params)
       redirect_to root_path # go to the index so we can see the book in the list
       return
@@ -72,14 +60,6 @@ class BooksController < ApplicationController
   end
   
   def destroy
-    book_id = params[:id]
-    @book = Book.find_by(id: book_id)
-    
-    if @book.nil?
-      head :not_found
-      return
-    end
-    
     @book.destroy
     
     redirect_to books_path
@@ -92,5 +72,21 @@ class BooksController < ApplicationController
     return params.require(:book).permit(:author_id, :title, 
     :description, :publication_date)
   end
+
+  def find_book
+    @book = Book.find_by(id: params[:id])
+  end
   
+  def if_book_missing
+    if @book.nil?
+      flash[:warning] = "Book with id #{params[:id]} was not found."
+      redirect_to root_path 
+      return
+    end
+  end
+
+  # def no_oper
+  #   yeahhh = 5+5
+  # end
+
 end
