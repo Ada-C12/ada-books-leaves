@@ -1,7 +1,30 @@
 require "test_helper"
 
 describe UsersController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  before do
+    User.create!(username: "devin")
+  end
+
+  describe "current" do
+    it "sets session[:user_id], redirects, and responds with success
+    " do
+      # Arrange
+      user = perform_login
+
+      # Act 
+      get current_user_path
+
+      # Assert 
+      must_respond_with :success
+    end
+
+    it "sets flash[:error] and redirects when there's no user" do
+      # Act 
+      get current_user_path
+
+      #Assert
+      expect(flash[:error]).must_equal "You must be logged in to see this page"
+      must_redirect_to root_path
+    end
+  end
 end
