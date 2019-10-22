@@ -42,7 +42,7 @@ class BooksController < ApplicationController
       return
     else # save failed :(
       flash.now[:failure] = "Book failed to save"
-      render :new # show the new book form view again
+      render :new, status: :bad_request # show the new book form view again
       return
     end
   end
@@ -54,7 +54,7 @@ class BooksController < ApplicationController
       redirect_to root_path # go to the index so we can see the book in the list
       return
     else # save failed :(
-      render :edit # show the new book form view again
+      render :edit, status: :bad_request # show the new book form view again
       return
     end
   end
@@ -70,7 +70,7 @@ class BooksController < ApplicationController
   
   def book_params
     return params.require(:book).permit(:author_id, :title, 
-    :description, :publication_date)
+    :description, :publication_date, genre_ids: [])
   end
 
   def find_book

@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :author
+  has_and_belongs_to_many :genres
+
 
   # validations
   validates :title, presence: true, uniqueness: true
