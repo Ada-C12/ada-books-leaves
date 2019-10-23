@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    if current_users.nil?
+    if current_user.nil?
       flash[:error] = "You must be logged in to view this section"
       redirect_to root_path
     end 
