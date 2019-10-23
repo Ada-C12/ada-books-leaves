@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 2019_10_23_222600) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "books_genres", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "genre_id"
+    t.index ["book_id"], name: "index_books_genres_on_book_id"
+    t.index ["genre_id"], name: "index_books_genres_on_genre_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,7 +2,15 @@
 
 <h2>Title: <%= @book.title %></h2>
 <h3>Author: <%= @book.author.name %></h3>
-<p><%= @book.description.html_safe%></p>
+<% unless @book.description.nil? %>
+  <p><%= @book.description.html_safe%></p>
+<% end %>
 Added to this site <%= readable_date(@book.created_at) %>
-
+<ul>
+<% @book.genres.each do |genre| %>
+  <li>
+    <%= genre.name %>
+  </li>
+<% end %>
+</ul>
 <p><%= link_to "Return to Book List", books_path %></p>

@@ -33,6 +33,12 @@
   <%= f.label :publication_date %>
   <%= f.number_field :publication_date %>
 
+  <div>
+    <%= f.label :genres %>
+    <%= collection_check_boxes(:book, :genre_ids, Genre.all, :id, :name) %>
+  </div>
+  <br />
+
   <%# <%= f.label :read %>
   <%# <%= f.check_box :read %>
 
