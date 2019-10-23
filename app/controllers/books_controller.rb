@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
   before_action :if_book_missing, only: [:show, :edit, :destroy]
+  before_action :require_login, except: [:index]
   # after_action :no_oper, only: [:show, :edit]
 
   def index
