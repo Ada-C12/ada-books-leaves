@@ -1,2 +1,5 @@
-devin:
-  username: devinh
+gwiff:
+  name: devinh
+  email: blah@zone.one
+  uid: 0987654
+  provider: github
